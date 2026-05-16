@@ -39,19 +39,16 @@ const Home = () => {
 
     setLoading(true)
     try {
-      const API_URL = import.meta.env.VITE_API_URL || '';
-      const response = await fetch(`${API_URL}/api/process`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          prompt: prompt,
-          models: selectedModels
-        })
+        body: JSON.stringify({ message: prompt })
       })
       const data = await response.json()
-      navigate(`/results/${data.interaction_id}`, { state: { data } })
+      // Note: adjust navigation if backend response structure has changed
+      navigate(`/results/${data.interaction_id || data.id || 'latest'}`, { state: { data } })
     } catch (err) {
       console.error("Error processing prompt:", err)
       alert("Failed to connect to backend. Make sure the Flask server is running on port 5001.")
