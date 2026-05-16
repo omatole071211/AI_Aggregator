@@ -39,12 +39,15 @@ const Home = () => {
 
     setLoading(true)
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/chat`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/process`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ message: prompt }) // FIXED: Changed input to prompt
+        body: JSON.stringify({
+          prompt: prompt,
+          models: selectedModels
+        })
       })
       const data = await response.json()
       // Note: adjust navigation if backend response structure has changed
