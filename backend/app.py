@@ -19,6 +19,10 @@ CORS(app)
 # Initialize Database
 init_db()
 
+@app.route("/")
+def home():
+    return "Backend is running successfully!"
+
 @app.route('/api/process', methods=['POST'])
 def process_prompt():
     data = request.json
@@ -170,4 +174,5 @@ def delete_interaction(interaction_id):
         conn.close()
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)

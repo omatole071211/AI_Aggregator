@@ -14,7 +14,8 @@ const History = () => {
 
   const fetchHistory = async () => {
     try {
-      const response = await axios.get('/api/history')
+      const API_URL = import.meta.env.VITE_API_URL || '';
+      const response = await axios.get(`${API_URL}/api/history`)
       setHistory(response.data)
     } catch (err) {
       console.error("Error fetching history:", err)
@@ -27,7 +28,8 @@ const History = () => {
     if (!window.confirm("Are you sure you want to delete this interaction?")) return
     
     try {
-      await axios.delete(`/api/history/${id}`)
+      const API_URL = import.meta.env.VITE_API_URL || '';
+      await axios.delete(`${API_URL}/api/history/${id}`)
       setHistory(prev => prev.filter(item => item.id !== id))
     } catch (err) {
       console.error("Error deleting history item:", err)

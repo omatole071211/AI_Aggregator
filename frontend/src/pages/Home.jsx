@@ -39,11 +39,19 @@ const Home = () => {
 
     setLoading(true)
     try {
-      const response = await axios.post('/api/process', {
-        prompt,
-        models: selectedModels
+      const API_URL = import.meta.env.VITE_API_URL || '';
+      const response = await fetch(`${API_URL}/api/process`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          prompt: prompt,
+          models: selectedModels
+        })
       })
-      navigate(`/results/${response.data.interaction_id}`, { state: { data: response.data } })
+      const data = await response.json()
+      navigate(`/results/${data.interaction_id}`, { state: { data } })
     } catch (err) {
       console.error("Error processing prompt:", err)
       alert("Failed to connect to backend. Make sure the Flask server is running on port 5001.")
