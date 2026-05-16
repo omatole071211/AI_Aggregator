@@ -44,7 +44,7 @@ const Home = () => {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ message: prompt })
+        body: JSON.stringify({ message: input })
       })
       const data = await response.json()
       // Note: adjust navigation if backend response structure has changed
