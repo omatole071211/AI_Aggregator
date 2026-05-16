@@ -14,7 +14,7 @@ const History = () => {
 
   const fetchHistory = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/history')
+      const response = await axios.get('/api/history')
       setHistory(response.data)
     } catch (err) {
       console.error("Error fetching history:", err)
@@ -27,7 +27,7 @@ const History = () => {
     if (!window.confirm("Are you sure you want to delete this interaction?")) return
     
     try {
-      await axios.delete(`http://localhost:5001/api/history/${id}`)
+      await axios.delete(`/api/history/${id}`)
       setHistory(prev => prev.filter(item => item.id !== id))
     } catch (err) {
       console.error("Error deleting history item:", err)

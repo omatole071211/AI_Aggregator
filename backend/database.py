@@ -2,6 +2,8 @@ import sqlite3
 import os
 
 DB_PATH = os.path.join(os.path.dirname(__file__), 'database.sqlite')
+if os.environ.get('VERCEL'):
+    DB_PATH = '/tmp/database.sqlite'
 
 def get_db_connection():
     conn = sqlite3.connect(DB_PATH)

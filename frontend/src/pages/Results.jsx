@@ -45,7 +45,7 @@ const Results = () => {
     if (!data) {
       const fetchData = async () => {
         try {
-          const response = await axios.get(`http://localhost:5001/api/history/${id}`)
+          const response = await axios.get(`/api/history/${id}`)
           // Simulate some additional "Thinking" time for the Elite Scanner
           setTimeout(() => {
             setData(response.data)

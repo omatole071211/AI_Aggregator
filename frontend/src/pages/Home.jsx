@@ -39,7 +39,7 @@ const Home = () => {
 
     setLoading(true)
     try {
-      const response = await axios.post('http://localhost:5001/api/process', {
+      const response = await axios.post('/api/process', {
         prompt,
         models: selectedModels
       })
