@@ -44,14 +44,14 @@ const Home = () => {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ message: input })
+        body: JSON.stringify({ message: prompt }) // FIXED: Changed input to prompt
       })
       const data = await response.json()
       // Note: adjust navigation if backend response structure has changed
       navigate(`/results/${data.interaction_id || data.id || 'latest'}`, { state: { data } })
     } catch (err) {
       console.error("Error processing prompt:", err)
-      alert("Failed to connect to backend. Make sure the Flask server is running on port 5001.")
+      alert("Failed to connect. If deployed on Vercel, make sure VITE_API_URL is added to your Vercel Environment Variables.")
     } finally {
       setLoading(false)
     }
