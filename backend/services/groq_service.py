@@ -26,4 +26,9 @@ def get_groq_response(prompt):
 
     result = response.json()
 
-    return result["choices"][0]["message"]["content"]
+    print(result)
+
+    if "choices" in result:
+        return result["choices"][0]["message"]["content"]
+
+    return f"Groq API Error: {result}"
