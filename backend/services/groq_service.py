@@ -13,7 +13,7 @@ def get_groq_response(prompt):
     }
 
     data = {
-        "model": "llama3-8b-8192",
+        "model": "llama-3.1-8b-instant",
         "messages": [
             {
                 "role": "user",
@@ -25,8 +25,6 @@ def get_groq_response(prompt):
     response = requests.post(url, headers=headers, json=data)
 
     result = response.json()
-
-    print(result)
 
     if "choices" in result:
         return result["choices"][0]["message"]["content"]
