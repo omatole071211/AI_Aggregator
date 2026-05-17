@@ -9,9 +9,9 @@ def test_groq():
     print(f"Testing Groq with key: {api_key[:10]}...")
     
     try:
-        client = Groq(api_key=api_key)
+        client = Groq()
         completion = client.chat.completions.create(
-            model="llama-3.1-70b-versatile",
+            model="llama-3.1-8b-instant",
             messages=[{"role": "user", "content": "Hello!"}],
         )
         print("Success! Response:")

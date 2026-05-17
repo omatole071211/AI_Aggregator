@@ -15,7 +15,7 @@ def get_groq_response(prompt):
         return "[DUMMY] Groq (Llama 3): Please provide a valid GROQ_API_KEY in .env"
 
     try:
-        client = Groq(api_key=api_key)
+        client = Groq()
         
         chat_completion = client.chat.completions.create(
             messages=[
@@ -24,7 +24,7 @@ def get_groq_response(prompt):
                     "content": prompt,
                 }
             ],
-            model="llama-3.3-70b-versatile",
+            model="llama-3.1-8b-instant",
         )
         
         return chat_completion.choices[0].message.content
