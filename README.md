@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Project Report: One Prompt Multiple Minds
 
 ## SECTION 1 — PROJECT SUMMARY
@@ -288,3 +289,7 @@ ccps project/
 "# AI-Prompt" 
 "# AI-Prompt" 
 "# AI-Prompt" 
+=======
+# AI_Aggregator
+"One Prompt Multiple Minds" is a React &amp; Flask web app letting users query multiple AI models (Gemini, Groq, Mistral) concurrently with a single prompt. It uses multithreading for speed and features a meta-prompting system that synthesizes the best answers into a single "Collective Insight". Responses and metrics are saved in a SQLite database.
+>>>>>>> ba1d6c9a8dca21aab8b988c6b504d103781c960f
