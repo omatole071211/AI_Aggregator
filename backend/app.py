@@ -59,6 +59,10 @@ init_db()
 def home():
     return "Backend is running successfully!"
 
+@app.route("/ai", methods=["POST"])
+def ai():
+    return {"message": "AI working"}
+
 @app.route('/api/process', methods=['POST'])
 def process_prompt():
     data = request.json
