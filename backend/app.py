@@ -50,7 +50,7 @@ from services.summary_service import generate_summary
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins="*")
 
 # Initialize Database
 init_db()

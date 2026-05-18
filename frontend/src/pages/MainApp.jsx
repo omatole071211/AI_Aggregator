@@ -48,6 +48,11 @@ export default function MainApp() {
   // Auto-scroll ref
   const bottomRef = useRef(null);
 
+  // Ping backend to wake up Render free tier on load
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/`).catch(err => console.log("Wake up ping:", err));
+  }, []);
+
   useEffect(() => {
     if (bottomRef.current) {
       bottomRef.current.scrollIntoView({ behavior: 'smooth' });
