@@ -50,7 +50,8 @@ export default function MainApp() {
 
   // Ping backend to wake up Render free tier on load
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/`).catch(err => console.log("Wake up ping:", err));
+    const API_URL = import.meta.env.VITE_API_URL || 'https://ai-aggregator-r7pw.onrender.com';
+    fetch(`${API_URL}/`).catch(err => console.log("Wake up ping:", err));
   }, []);
 
   useEffect(() => {
@@ -64,7 +65,7 @@ export default function MainApp() {
     setStep(2); // Loading
     
     try {
-      const API_URL = import.meta.env.VITE_API_URL || '';
+      const API_URL = import.meta.env.VITE_API_URL || 'https://ai-aggregator-r7pw.onrender.com';
       const response = await axios.post(`${API_URL}/api/process`, {
         prompt: prompt,
         models: selectedModels.map(m => m.toLowerCase())
